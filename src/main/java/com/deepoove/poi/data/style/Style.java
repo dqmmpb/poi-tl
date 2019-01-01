@@ -17,10 +17,9 @@ package com.deepoove.poi.data.style;
 
 /**
  * 样式
- * 
+ *
  * @author Sayi
  * @version 0.0.3
- *
  */
 public class Style {
 
@@ -53,7 +52,8 @@ public class Style {
      */
     private Boolean isUnderLine;
 
-    public Style() {}
+    public Style() {
+    }
 
     public Style(String color) {
         this.color = color;

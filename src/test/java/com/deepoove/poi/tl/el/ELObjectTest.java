@@ -1,15 +1,14 @@
 package com.deepoove.poi.tl.el;
 
+import com.deepoove.poi.el.ELObject;
+import com.deepoove.poi.exception.ExpressionEvalException;
+import org.junit.Assert;
+import org.junit.Test;
+
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import org.junit.Assert;
-import org.junit.Test;
-
-import com.deepoove.poi.el.ELObject;
-import com.deepoove.poi.exception.ExpressionEvalException;
 
 public class ELObjectTest {
 
@@ -123,7 +122,7 @@ public class ELObjectTest {
                 put("word", "模板引擎");
                 put("time", "2018-06-20");
                 put("what",
-                        "Java Word模板引擎： Minimal Microsoft word(docx) templating with {{template}} in Java. It works by expanding tags in a template using values provided in a JavaMap or JavaObject.");
+                    "Java Word模板引擎： Minimal Microsoft word(docx) templating with {{template}} in Java. It works by expanding tags in a template using values provided in a JavaMap or JavaObject.");
                 put("author", new Object());
             }
         };

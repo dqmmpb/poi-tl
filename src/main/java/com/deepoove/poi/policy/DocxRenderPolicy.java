@@ -15,24 +15,23 @@
  */
 package com.deepoove.poi.policy;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.util.ArrayList;
-import java.util.List;
-
-import org.apache.poi.xwpf.usermodel.XWPFRun;
-
 import com.deepoove.poi.NiceXWPFDocument;
 import com.deepoove.poi.XWPFTemplate;
 import com.deepoove.poi.config.Configure;
 import com.deepoove.poi.data.DocxRenderData;
 import com.deepoove.poi.template.run.RunTemplate;
+import org.apache.poi.xwpf.usermodel.XWPFRun;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * <p>
  * word模板List循环渲染后合并
  * </p>
- * 
+ *
  * @author Sayi
  * @version 1.3.0
  */
@@ -44,14 +43,14 @@ public class DocxRenderPolicy extends AbstractRenderPolicy {
 
     @Override
     public void doRender(RunTemplate runTemplate, Object data, XWPFTemplate template)
-            throws Exception {
+        throws Exception {
         NiceXWPFDocument doc = template.getXWPFDocument();
         XWPFRun run = runTemplate.getRun();
         // 优先清空标签
         clearPlaceholder(run);
 
         List<NiceXWPFDocument> docMerges = getMergedDocxs((DocxRenderData) data,
-                template.getConfig());
+            template.getConfig());
         try {
             doc = doc.merge(docMerges, run);
         } catch (Exception e) {

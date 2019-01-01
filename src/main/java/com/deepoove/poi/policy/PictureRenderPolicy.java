@@ -15,20 +15,19 @@
  */
 package com.deepoove.poi.policy;
 
+import com.deepoove.poi.XWPFTemplate;
+import com.deepoove.poi.data.PictureRenderData;
+import com.deepoove.poi.template.run.RunTemplate;
+import org.apache.poi.xwpf.usermodel.XWPFDocument;
+import org.apache.poi.xwpf.usermodel.XWPFRun;
+
 import java.io.ByteArrayInputStream;
 import java.io.FileInputStream;
 import java.io.InputStream;
 
-import org.apache.poi.xwpf.usermodel.XWPFDocument;
-import org.apache.poi.xwpf.usermodel.XWPFRun;
-
-import com.deepoove.poi.XWPFTemplate;
-import com.deepoove.poi.data.PictureRenderData;
-import com.deepoove.poi.template.run.RunTemplate;
-
 public class PictureRenderPolicy extends AbstractRenderPolicy {
-	
-	static final int EMU = 9525;
+
+    static final int EMU = 9525;
 
     @Override
     protected boolean validate(Object data) {
@@ -36,18 +35,18 @@ public class PictureRenderPolicy extends AbstractRenderPolicy {
 
         if (!(data instanceof PictureRenderData)) {
             logger.error("Error datamodel: correct type is PictureRenderData, but is "
-                    + data.getClass());
+                + data.getClass());
             return false;
         }
 
         return (null != ((PictureRenderData) data).getData()
-                || null != ((PictureRenderData) data).getPath());
+            || null != ((PictureRenderData) data).getPath());
     }
 
     @Override
     public void doRender(RunTemplate runTemplate, Object model, XWPFTemplate template)
-            throws Exception {
-    	XWPFRun run = runTemplate.getRun();
+        throws Exception {
+        XWPFRun run = runTemplate.getRun();
         // 如果出现异常，图片不存在，优先清空标签
         clearPlaceholder(run);
 
@@ -55,9 +54,9 @@ public class PictureRenderPolicy extends AbstractRenderPolicy {
         int suggestFileType = suggestFileType(picture.getPath());
 
         InputStream ins = null == picture.getData() ? new FileInputStream(picture.getPath()) : new ByteArrayInputStream(picture.getData());
-        
-        run.addPicture(ins, suggestFileType, "Generated", picture.getWidth()*EMU,
-                picture.getHeight()*EMU);
+
+        run.addPicture(ins, suggestFileType, "Generated", picture.getWidth() * EMU,
+            picture.getHeight() * EMU);
     }
 
     public static int suggestFileType(String imgFile) {
@@ -77,7 +76,7 @@ public class PictureRenderPolicy extends AbstractRenderPolicy {
         else if (imgFile.endsWith(".wpg")) format = XWPFDocument.PICTURE_TYPE_WPG;
         else {
             logger.error("Unsupported picture: " + imgFile
-                    + ". Expected emf|wmf|pict|jpeg|png|dib|gif|tiff|eps|bmp|wpg");
+                + ". Expected emf|wmf|pict|jpeg|png|dib|gif|tiff|eps|bmp|wpg");
         }
         return format;
     }

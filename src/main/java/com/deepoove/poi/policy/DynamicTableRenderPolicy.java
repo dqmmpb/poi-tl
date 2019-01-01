@@ -15,6 +15,10 @@
  */
 package com.deepoove.poi.policy;
 
+import com.deepoove.poi.NiceXWPFDocument;
+import com.deepoove.poi.XWPFTemplate;
+import com.deepoove.poi.template.ElementTemplate;
+import com.deepoove.poi.template.run.RunTemplate;
 import org.apache.poi.xwpf.usermodel.XWPFParagraph;
 import org.apache.poi.xwpf.usermodel.XWPFRun;
 import org.apache.poi.xwpf.usermodel.XWPFTable;
@@ -22,19 +26,14 @@ import org.apache.xmlbeans.XmlCursor;
 import org.apache.xmlbeans.XmlObject;
 import org.openxmlformats.schemas.wordprocessingml.x2006.main.CTTbl;
 
-import com.deepoove.poi.NiceXWPFDocument;
-import com.deepoove.poi.XWPFTemplate;
-import com.deepoove.poi.template.ElementTemplate;
-import com.deepoove.poi.template.run.RunTemplate;
-
 /**
  * 支持表格内的文本模板动态持有XWPFTable对象 <br/>
- * 
  * <p>
- * 通常使用在一个表格的样式已经制作好，我们仅仅需要处理表格内部某些单元格， 
+ * <p>
+ * 通常使用在一个表格的样式已经制作好，我们仅仅需要处理表格内部某些单元格，
  * 通过此类可以获得整个表格的XWPFTable对象，进而使用POI处理这个表格
  * </p>
- * 
+ *
  * @author Sayi 卅一
  * @version 0.0.3
  */
@@ -61,10 +60,8 @@ public abstract class DynamicTableRenderPolicy implements RenderPolicy {
     }
 
     /**
-     * @param table
-     *            表格
-     * @param data
-     *            数据
+     * @param table 表格
+     * @param data  数据
      */
     public abstract void render(XWPFTable table, Object data);
 

@@ -15,26 +15,20 @@
  */
 package com.deepoove.poi;
 
-import java.lang.reflect.Field;
-import java.util.List;
-
 import org.apache.poi.openxml4j.opc.PackageRelationship;
-import org.apache.poi.xwpf.usermodel.IRunBody;
-import org.apache.poi.xwpf.usermodel.IRunElement;
-import org.apache.poi.xwpf.usermodel.XWPFHyperlinkRun;
-import org.apache.poi.xwpf.usermodel.XWPFParagraph;
-import org.apache.poi.xwpf.usermodel.XWPFRelation;
-import org.apache.poi.xwpf.usermodel.XWPFRun;
+import org.apache.poi.xwpf.usermodel.*;
 import org.openxmlformats.schemas.wordprocessingml.x2006.main.CTHyperlink;
 import org.openxmlformats.schemas.wordprocessingml.x2006.main.CTR;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.lang.reflect.Field;
+import java.util.List;
+
 /**
  * XWPFParagraph类的增强
- * 
+ *
  * @author Sayi
- * @version
  */
 public class XWPFParagraphWrapper {
 
@@ -48,7 +42,7 @@ public class XWPFParagraphWrapper {
 
     public XWPFHyperlinkRun createHyperLinkRun(String link) {
         PackageRelationship relationship = paragraph.getDocument().getPackagePart()
-                .addExternalRelationship(link, XWPFRelation.HYPERLINK.getRelation());
+            .addExternalRelationship(link, XWPFRelation.HYPERLINK.getRelation());
         CTHyperlink hyperlink = paragraph.getCTP().addNewHyperlink();
         hyperlink.setId(relationship.getId());
         CTR ctr = hyperlink.addNewR();
@@ -60,17 +54,15 @@ public class XWPFParagraphWrapper {
 
     /**
      * 插入超链接
-     * 
-     * @param pos
-     *            位置
-     * @param link
-     *            链接
+     *
+     * @param pos  位置
+     * @param link 链接
      * @return XWPFRun
      */
     public XWPFRun insertNewHyperLinkRun(int pos, String link) {
         if (pos >= 0 && pos <= paragraph.getRuns().size()) {
             PackageRelationship relationship = paragraph.getDocument().getPackagePart()
-                    .addExternalRelationship(link, XWPFRelation.HYPERLINK.getRelation());
+                .addExternalRelationship(link, XWPFRelation.HYPERLINK.getRelation());
             CTHyperlink hyperlink = paragraph.getCTP().insertNewHyperlink(pos);
             hyperlink.setId(relationship.getId());
             CTR ctr = hyperlink.addNewR();

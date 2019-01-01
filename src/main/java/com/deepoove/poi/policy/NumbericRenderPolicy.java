@@ -1,8 +1,12 @@
 package com.deepoove.poi.policy;
 
-import java.math.BigInteger;
-import java.util.List;
-
+import com.deepoove.poi.NiceXWPFDocument;
+import com.deepoove.poi.XWPFTemplate;
+import com.deepoove.poi.data.NumbericRenderData;
+import com.deepoove.poi.data.TextRenderData;
+import com.deepoove.poi.data.style.Style;
+import com.deepoove.poi.template.run.RunTemplate;
+import com.deepoove.poi.util.StyleUtils;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.poi.xwpf.usermodel.IRunBody;
 import org.apache.poi.xwpf.usermodel.XWPFParagraph;
@@ -11,13 +15,8 @@ import org.openxmlformats.schemas.wordprocessingml.x2006.main.CTP;
 import org.openxmlformats.schemas.wordprocessingml.x2006.main.CTPPr;
 import org.openxmlformats.schemas.wordprocessingml.x2006.main.CTParaRPr;
 
-import com.deepoove.poi.NiceXWPFDocument;
-import com.deepoove.poi.XWPFTemplate;
-import com.deepoove.poi.data.NumbericRenderData;
-import com.deepoove.poi.data.TextRenderData;
-import com.deepoove.poi.data.style.Style;
-import com.deepoove.poi.template.run.RunTemplate;
-import com.deepoove.poi.util.StyleUtils;
+import java.math.BigInteger;
+import java.util.List;
 
 /**
  * @author Sayi
@@ -31,7 +30,7 @@ public class NumbericRenderPolicy extends AbstractRenderPolicy {
 
         if (!(data instanceof NumbericRenderData)) {
             logger.error("Error datamodel: correct type is NumbericRenderData, but is "
-                    + data.getClass());
+                + data.getClass());
             return false;
         }
 
@@ -45,7 +44,7 @@ public class NumbericRenderPolicy extends AbstractRenderPolicy {
 
     @Override
     public void doRender(RunTemplate runTemplate, Object data, XWPFTemplate template)
-            throws Exception {
+        throws Exception {
         NiceXWPFDocument doc = template.getXWPFDocument();
         XWPFRun run = runTemplate.getRun();
         NumbericRenderData numbericData = (NumbericRenderData) data;
@@ -53,7 +52,7 @@ public class NumbericRenderPolicy extends AbstractRenderPolicy {
         Style fmtStyle = numbericData.getFmtStyle();
 
         BigInteger numID = doc.addNewNumbericId(numbericData.getNumFmt());
-        
+
         XWPFParagraph paragraph;
         XWPFRun newRun;
         for (TextRenderData line : datas) {

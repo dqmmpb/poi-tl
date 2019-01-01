@@ -1,30 +1,22 @@
 package com.deepoove.poi.util;
 
-import java.math.BigInteger;
-
 import org.apache.poi.xwpf.usermodel.XWPFTable;
 import org.apache.poi.xwpf.usermodel.XWPFTableCell;
 import org.apache.poi.xwpf.usermodel.XWPFTableRow;
-import org.openxmlformats.schemas.wordprocessingml.x2006.main.CTTblBorders;
-import org.openxmlformats.schemas.wordprocessingml.x2006.main.CTTblGrid;
-import org.openxmlformats.schemas.wordprocessingml.x2006.main.CTTblGridCol;
-import org.openxmlformats.schemas.wordprocessingml.x2006.main.CTTblPr;
-import org.openxmlformats.schemas.wordprocessingml.x2006.main.CTTblWidth;
-import org.openxmlformats.schemas.wordprocessingml.x2006.main.CTTcPr;
-import org.openxmlformats.schemas.wordprocessingml.x2006.main.CTVMerge;
-import org.openxmlformats.schemas.wordprocessingml.x2006.main.STMerge;
-import org.openxmlformats.schemas.wordprocessingml.x2006.main.STTblWidth;
+import org.openxmlformats.schemas.wordprocessingml.x2006.main.*;
+
+import java.math.BigInteger;
 
 /**
  * XWPFTable 增强工具类 <br/>
- * 
+ * <p>
  * <ul>
  * <li>合并行单元格</li>
  * <li>合并列单元格</li>
  * <li>设置每列宽度</li>
  * <li>边框大小</li>
  * </ul>
- * 
+ *
  * @author Sayi
  * @version 1.4.0
  */
@@ -32,15 +24,11 @@ public final class TableTools {
 
     /**
      * 合并行单元格
-     * 
-     * @param table
-     *            表格对象
-     * @param row
-     *            行 从0开始
-     * @param fromCol
-     *            起始列
-     * @param toCol
-     *            结束列
+     *
+     * @param table   表格对象
+     * @param row     行 从0开始
+     * @param fromCol 起始列
+     * @param toCol   结束列
      */
     public static void mergeCellsHorizonal(XWPFTable table, int row, int fromCol, int toCol) {
         if (toCol <= fromCol) return;
@@ -58,15 +46,11 @@ public final class TableTools {
 
     /**
      * 合并列单元格
-     * 
-     * @param table
-     *            表格对象
-     * @param col
-     *            列 从0开始
-     * @param fromRow
-     *            起始行
-     * @param toRow
-     *            结束行
+     *
+     * @param table   表格对象
+     * @param col     列 从0开始
+     * @param fromRow 起始行
+     * @param toRow   结束行
      */
     public static void mergeCellsVertically(XWPFTable table, int col, int fromRow, int toRow) {
         if (toRow <= fromRow) return;
@@ -86,14 +70,12 @@ public final class TableTools {
 
     /**
      * 设置表格每列的宽度
-     * 
-     * @param table
-     *            表格对象
-     * @param widths
-     *            每列的宽度，单位CM
+     *
+     * @param table  表格对象
+     * @param widths 每列的宽度，单位CM
      */
     @SuppressWarnings("unused")
-    // TODO 
+    // TODO
     private static void widthTable(XWPFTable table, float[] colWidths) {
         float widthCM = 0;
         for (float w : colWidths) {
@@ -117,16 +99,16 @@ public final class TableTools {
             }
         }
     }
-    
+
     /**
      * 表格设置宽度，每列平均分布
-     * 
+     *
      * @param table
      * @param widthCM
      * @param cols
      */
     public static void widthTable(XWPFTable table, float widthCM, int cols) {
-        int width = (int)(widthCM/2.54*1440);
+        int width = (int) (widthCM / 2.54 * 1440);
         CTTblPr tblPr = table.getCTTbl().getTblPr();
         if (null == tblPr) {
             tblPr = table.getCTTbl().addNewTblPr();
@@ -150,7 +132,7 @@ public final class TableTools {
 
     /**
      * 设置表格边框
-     * 
+     *
      * @param table
      * @param size
      */
@@ -176,7 +158,7 @@ public final class TableTools {
 
     private static CTTcPr getTcPr(XWPFTableCell cell) {
         CTTcPr tcPr = cell.getCTTc().isSetTcPr() ? cell.getCTTc().getTcPr()
-                : cell.getCTTc().addNewTcPr();
+            : cell.getCTTc().addNewTcPr();
         return tcPr;
     }
 

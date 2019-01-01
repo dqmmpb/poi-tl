@@ -15,20 +15,6 @@
  */
 package com.deepoove.poi.policy;
 
-import java.math.BigInteger;
-import java.util.List;
-
-import org.apache.poi.xwpf.usermodel.XWPFParagraph;
-import org.apache.poi.xwpf.usermodel.XWPFRun;
-import org.apache.poi.xwpf.usermodel.XWPFTable;
-import org.apache.poi.xwpf.usermodel.XWPFTableCell;
-import org.openxmlformats.schemas.wordprocessingml.x2006.main.CTTblBorders;
-import org.openxmlformats.schemas.wordprocessingml.x2006.main.CTTblGrid;
-import org.openxmlformats.schemas.wordprocessingml.x2006.main.CTTblGridCol;
-import org.openxmlformats.schemas.wordprocessingml.x2006.main.CTTblPr;
-import org.openxmlformats.schemas.wordprocessingml.x2006.main.CTTblWidth;
-import org.openxmlformats.schemas.wordprocessingml.x2006.main.STTblWidth;
-
 import com.deepoove.poi.NiceXWPFDocument;
 import com.deepoove.poi.XWPFTemplate;
 import com.deepoove.poi.data.MiniTableRenderData;
@@ -38,15 +24,22 @@ import com.deepoove.poi.data.TextRenderData;
 import com.deepoove.poi.data.style.Style;
 import com.deepoove.poi.template.ElementTemplate;
 import com.deepoove.poi.template.run.RunTemplate;
+import org.apache.poi.xwpf.usermodel.XWPFParagraph;
+import org.apache.poi.xwpf.usermodel.XWPFRun;
+import org.apache.poi.xwpf.usermodel.XWPFTable;
+import org.apache.poi.xwpf.usermodel.XWPFTableCell;
+import org.openxmlformats.schemas.wordprocessingml.x2006.main.*;
+
+import java.math.BigInteger;
+import java.util.List;
 
 /**
  * 简单的表格处理，暂无样式
- * 
- * @author Sayi 卅一
  *
+ * @author Sayi 卅一
  */
 public class SimpleTableRenderPolicy implements RenderPolicy {
-    
+
     private MiniTableRenderPolicy miniTableRenderPolicy = new MiniTableRenderPolicy();
 
     @Override
@@ -55,13 +48,13 @@ public class SimpleTableRenderPolicy implements RenderPolicy {
         RunTemplate runTemplate = (RunTemplate) eleTemplate;
         XWPFRun run = runTemplate.getRun();
         if (null == data) return;
-        
+
         //兼容新的数据结构体
-        if (data instanceof MiniTableRenderData){
+        if (data instanceof MiniTableRenderData) {
             miniTableRenderPolicy.render(eleTemplate, data, template);
             return;
         }
-        
+
         TableRenderData tableData = (TableRenderData) data;
         List<RenderData> headers = tableData.getHeaders();
         List<Object> datas = tableData.getDatas();

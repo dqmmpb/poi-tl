@@ -1,16 +1,15 @@
 package com.deepoove.poi.tl.issue;
 
+import com.deepoove.poi.XWPFTemplate;
+import com.deepoove.poi.data.DocxRenderData;
+import org.junit.Test;
+
 import java.io.File;
 import java.io.FileOutputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import org.junit.Test;
-
-import com.deepoove.poi.XWPFTemplate;
-import com.deepoove.poi.data.DocxRenderData;
 
 public class Issue157 {
 
@@ -24,9 +23,9 @@ public class Issue157 {
         /*
          * List<Teacher> stuList = new ArrayList<Teacher>(); Teacher p1 = new
          * Teacher(); p1.setName("test1"); stuList.add(p1);
-         * 
+         *
          * p1 = new Teacher(); p1.setName("test2"); stuList.add(p1);
-         * 
+         *
          * params.put("students", new DocxRenderData(new
          * File("src/test/resources/issue/test_teacher.docx"), stuList));
          */
@@ -43,7 +42,7 @@ public class Issue157 {
         teacherList.add(t1);
 
         params.put("teachers", new DocxRenderData(
-                new File("src/test/resources/issue/test_teacher.docx"), teacherList));
+            new File("src/test/resources/issue/test_teacher.docx"), teacherList));
 
         XWPFTemplate doc = XWPFTemplate.compile("src/test/resources/issue//test_stu_tea.docx");
         doc.render(params);

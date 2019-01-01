@@ -1,16 +1,15 @@
 package com.deepoove.poi.tl.policy;
 
-import java.io.FileOutputStream;
-import java.util.HashMap;
-import java.util.Map;
-
-import org.junit.Test;
-
 import com.deepoove.poi.XWPFTemplate;
 import com.deepoove.poi.config.Configure;
 import com.deepoove.poi.data.PictureRenderData;
 import com.deepoove.poi.policy.PictureRenderPolicy;
 import com.deepoove.poi.policy.TextRenderPolicy;
+import org.junit.Test;
+
+import java.io.FileOutputStream;
+import java.util.HashMap;
+import java.util.Map;
 
 public class ConfigurePluginTest {
 
@@ -27,11 +26,11 @@ public class ConfigurePluginTest {
         };
 
         Configure configure = Configure.newBuilder().buildGramer("[[", "]]")  //自定义语法以[[开头，以]]结尾
-                .addPlugin('%', new TextRenderPolicy()) //添加%语法：%开头的也是文本
-                .customPolicy("text", new PictureRenderPolicy()) //自定义标签text的策略：不是文本，是图片
-                .build();
+            .addPlugin('%', new TextRenderPolicy()) //添加%语法：%开头的也是文本
+            .customPolicy("text", new PictureRenderPolicy()) //自定义标签text的策略：不是文本，是图片
+            .build();
         XWPFTemplate template = XWPFTemplate.compile("src/test/resources/config.docx", configure)
-                .render(datas);
+            .render(datas);
 
         FileOutputStream out = new FileOutputStream("out_config.docx");
         template.write(out);

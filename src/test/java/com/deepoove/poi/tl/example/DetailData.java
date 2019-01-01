@@ -1,14 +1,14 @@
 package com.deepoove.poi.tl.example;
 
-import java.util.List;
-
 import com.deepoove.poi.data.RowRenderData;
 
+import java.util.List;
+
 public class DetailData {
-    
+
     // 货品数据
     private List<RowRenderData> goods;
-    
+
     // 人工费数据
     private List<RowRenderData> labors;
 

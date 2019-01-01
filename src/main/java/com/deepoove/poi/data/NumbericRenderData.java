@@ -15,15 +15,14 @@
  */
 package com.deepoove.poi.data;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
+import com.deepoove.poi.data.style.Style;
 import org.apache.commons.lang3.tuple.Pair;
 import org.openxmlformats.schemas.wordprocessingml.x2006.main.STNumberFormat;
 import org.openxmlformats.schemas.wordprocessingml.x2006.main.STNumberFormat.Enum;
 
-import com.deepoove.poi.data.style.Style;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * @author Sayi
@@ -39,7 +38,7 @@ public class NumbericRenderData implements RenderData {
      * 1) 2) 3)
      */
     public static final Pair<Enum, String> FMT_DECIMAL_PARENTHESES = Pair.of(STNumberFormat.DECIMAL,
-            "%1)");
+        "%1)");
     /**
      * ● ● ●
      */
@@ -48,22 +47,22 @@ public class NumbericRenderData implements RenderData {
      * a. b. c.
      */
     public static final Pair<Enum, String> FMT_LOWER_LETTER = Pair.of(STNumberFormat.LOWER_LETTER,
-            "%1.");
+        "%1.");
     /**
      * i ⅱ ⅲ
      */
     public static final Pair<Enum, String> FMT_LOWER_ROMAN = Pair.of(STNumberFormat.LOWER_ROMAN,
-            "%1.");
+        "%1.");
     /**
      * A. B. C.
      */
     public static final Pair<Enum, String> FMT_UPPER_LETTER = Pair.of(STNumberFormat.UPPER_LETTER,
-            "%1.");
+        "%1.");
     /**
      * Ⅰ Ⅱ Ⅲ
      */
     public static final Pair<Enum, String> FMT_UPPER_ROMAN = Pair.of(STNumberFormat.UPPER_ROMAN,
-            "%1.");
+        "%1.");
     // /**
     // * 一、 二、 三、
     // */
@@ -88,9 +87,9 @@ public class NumbericRenderData implements RenderData {
     }
 
     /**
-     * @param numFmt 编号字符
+     * @param numFmt   编号字符
      * @param fmtStyle 编号样式
-     * @param numbers 列表内容
+     * @param numbers  列表内容
      */
     public NumbericRenderData(Pair<Enum, String> numFmt, Style fmtStyle, List<TextRenderData> numbers) {
         this.numFmt = numFmt;
@@ -101,7 +100,7 @@ public class NumbericRenderData implements RenderData {
     public NumbericRenderData(List<TextRenderData> numbers) {
         this(FMT_BULLET, numbers);
     }
-    
+
     public static NumbericRenderData build(String... text) {
         if (null == text) return null;
         List<TextRenderData> numbers = new ArrayList<TextRenderData>();
@@ -110,6 +109,7 @@ public class NumbericRenderData implements RenderData {
         }
         return new NumbericRenderData(numbers);
     }
+
     public static NumbericRenderData build(TextRenderData... data) {
         return new NumbericRenderData(null == data ? null : Arrays.asList(data));
     }

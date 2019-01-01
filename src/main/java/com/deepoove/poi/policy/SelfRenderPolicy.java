@@ -15,25 +15,25 @@
  */
 package com.deepoove.poi.policy;
 
-import org.apache.poi.xwpf.usermodel.XWPFRun;
-
 import com.deepoove.poi.XWPFTemplate;
 import com.deepoove.poi.template.ElementTemplate;
 import com.deepoove.poi.template.run.RunTemplate;
+import org.apache.poi.xwpf.usermodel.XWPFRun;
 
 /**
  * self render
+ *
  * @author Sayi
  * @version 0.0.3
  */
 public class SelfRenderPolicy implements RenderPolicy {
 
-	@Override
-	public void render(ElementTemplate eleTemplate, Object renderData,
-			XWPFTemplate template) {
-		RunTemplate runTemplate = (RunTemplate) eleTemplate;
-		XWPFRun run = runTemplate.getRun();
-		run.setText(runTemplate.getSource(), 0);
-	}
+    @Override
+    public void render(ElementTemplate eleTemplate, Object renderData,
+                       XWPFTemplate template) {
+        RunTemplate runTemplate = (RunTemplate) eleTemplate;
+        XWPFRun run = runTemplate.getRun();
+        run.setText(runTemplate.getSource(), 0);
+    }
 
 }

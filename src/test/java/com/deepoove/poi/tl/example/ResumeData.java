@@ -6,8 +6,8 @@ import com.deepoove.poi.data.PictureRenderData;
 
 /**
  * 代码由CodeGenUtils生成
+ *
  * @author Sayi
- * @version 
  */
 public class ResumeData {
 

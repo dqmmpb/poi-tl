@@ -15,11 +15,10 @@
  */
 package com.deepoove.poi.resolver;
 
-import java.util.List;
-
+import com.deepoove.poi.template.ElementTemplate;
 import org.apache.poi.xwpf.usermodel.XWPFDocument;
 
-import com.deepoove.poi.template.ElementTemplate;
+import java.util.List;
 
 public interface Visitor {
 

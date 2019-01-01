@@ -15,17 +15,6 @@
  */
 package com.deepoove.poi.policy;
 
-import java.util.List;
-
-import org.apache.commons.lang3.StringUtils;
-import org.apache.poi.xwpf.usermodel.XWPFParagraph;
-import org.apache.poi.xwpf.usermodel.XWPFRun;
-import org.apache.poi.xwpf.usermodel.XWPFTable;
-import org.apache.poi.xwpf.usermodel.XWPFTableCell;
-import org.apache.poi.xwpf.usermodel.XWPFTableRow;
-import org.openxmlformats.schemas.wordprocessingml.x2006.main.CTP;
-import org.openxmlformats.schemas.wordprocessingml.x2006.main.CTTc;
-
 import com.deepoove.poi.NiceXWPFDocument;
 import com.deepoove.poi.XWPFTemplate;
 import com.deepoove.poi.data.MiniTableRenderData;
@@ -36,10 +25,16 @@ import com.deepoove.poi.template.run.RunTemplate;
 import com.deepoove.poi.util.ObjectUtils;
 import com.deepoove.poi.util.StyleUtils;
 import com.deepoove.poi.util.TableTools;
+import org.apache.commons.lang3.StringUtils;
+import org.apache.poi.xwpf.usermodel.*;
+import org.openxmlformats.schemas.wordprocessingml.x2006.main.CTP;
+import org.openxmlformats.schemas.wordprocessingml.x2006.main.CTTc;
+
+import java.util.List;
 
 /**
  * 表格处理
- * 
+ *
  * @author Sayi 卅一
  * @since v1.3.0
  */
@@ -50,11 +45,11 @@ public class MiniTableRenderPolicy extends AbstractRenderPolicy {
         if (null == data) return false;
         if (!(data instanceof MiniTableRenderData)) {
             logger.error("Error datamodel: correct type is MiniTableRenderData, but is "
-                    + data.getClass());
+                + data.getClass());
             return false;
         }
         if (!((MiniTableRenderData) data).isSetBody()
-                && !((MiniTableRenderData) data).isSetHeader()) {
+            && !((MiniTableRenderData) data).isSetHeader()) {
             logger.error("Empty MiniTableRenderData datamodel: {}", data);
             return false;
         }
@@ -63,7 +58,7 @@ public class MiniTableRenderPolicy extends AbstractRenderPolicy {
 
     @Override
     public void doRender(RunTemplate runTemplate, Object data, XWPFTemplate template)
-            throws Exception {
+        throws Exception {
         NiceXWPFDocument doc = template.getXWPFDocument();
         XWPFRun run = runTemplate.getRun();
 
@@ -101,7 +96,7 @@ public class MiniTableRenderPolicy extends AbstractRenderPolicy {
     }
 
     private void renderNoDataTable(NiceXWPFDocument doc, XWPFRun run,
-            MiniTableRenderData tableData) {
+                                   MiniTableRenderData tableData) {
         int row = 2, col = tableData.getHeaders().size();
 
         XWPFTable table = doc.insertNewTable(run, row, col);
@@ -123,12 +118,10 @@ public class MiniTableRenderPolicy extends AbstractRenderPolicy {
 
     /**
      * 填充表格一行的数据
-     * 
+     *
      * @param table
-     * @param row
-     *            第几行
-     * @param rowData
-     *            行数据：确保行数据的大小不超过表格该行的单元格数量
+     * @param row     第几行
+     * @param rowData 行数据：确保行数据的大小不超过表格该行的单元格数量
      */
     public static void renderRow(XWPFTable table, int row, RowRenderData rowData) {
         if (null == rowData || rowData.size() <= 0) return;

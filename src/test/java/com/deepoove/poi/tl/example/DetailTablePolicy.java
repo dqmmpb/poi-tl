@@ -1,21 +1,20 @@
 package com.deepoove.poi.tl.example;
 
-import java.util.List;
-
-import org.apache.poi.xwpf.usermodel.XWPFTable;
-import org.apache.poi.xwpf.usermodel.XWPFTableRow;
-
 import com.deepoove.poi.data.RowRenderData;
 import com.deepoove.poi.policy.DynamicTableRenderPolicy;
 import com.deepoove.poi.policy.MiniTableRenderPolicy;
 import com.deepoove.poi.util.TableTools;
+import org.apache.poi.xwpf.usermodel.XWPFTable;
+import org.apache.poi.xwpf.usermodel.XWPFTableRow;
+
+import java.util.List;
 
 /**
  * 付款通知书 明细表格的自定义渲染策略<br/>
  * 1. 填充货品数据 <br/>
  * 2. 填充人工费数据 <br/>
+ *
  * @author Sayi
- * @version 
  */
 public class DetailTablePolicy extends DynamicTableRenderPolicy {
 

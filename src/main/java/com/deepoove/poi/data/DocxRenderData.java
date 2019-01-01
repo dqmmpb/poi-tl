@@ -21,6 +21,7 @@ import java.util.List;
 
 /**
  * 待合并文档和数据集合
+ *
  * @author Sayi
  * @version 1.3.0
  */
@@ -42,7 +43,7 @@ public class DocxRenderData implements RenderData {
 
     /**
      * 待合并文档可以先被数据集合渲染
-     * 
+     *
      * @param docx
      * @param dataList 数据列表，列表的大小表示循环的次数
      */
@@ -50,10 +51,10 @@ public class DocxRenderData implements RenderData {
         this.docx = docx;
         this.dataList = dataList;
     }
-    
+
     /**
      * 待合并文档可以先被数据渲染
-     * 
+     *
      * @param docx
      * @param data 数据，循环次数为1
      */

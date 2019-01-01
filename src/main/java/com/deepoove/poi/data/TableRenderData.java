@@ -19,81 +19,81 @@ import java.util.List;
 
 /**
  * 简单的表格渲染数据
- * 
- * @see {@link MiniTableRenderData}
+ *
  * @author Sayi
  * @version 0.0.3
+ * @see {@link MiniTableRenderData}
  */
 @Deprecated
 public class TableRenderData implements RenderData {
 
-	private List<RenderData> headers;
-	private List<Object> datas;
-	private String noDatadesc;
+    private List<RenderData> headers;
+    private List<Object> datas;
+    private String noDatadesc;
 
-	/**
-	 * dxa - Specifies that the value is in twentieths of a point (1/1440 of an inch).
-	 */
-	private int width;
+    /**
+     * dxa - Specifies that the value is in twentieths of a point (1/1440 of an inch).
+     */
+    private int width;
 
-	public TableRenderData(List<RenderData> headers, List<Object> datas) {
-		this(headers, datas, null, 0);
-	}
+    public TableRenderData(List<RenderData> headers, List<Object> datas) {
+        this(headers, datas, null, 0);
+    }
 
-	/**
-	 * 动态渲染的表格
-	 * 
-	 * @param datas
-	 * @param noDatadesc
-	 */
-	public TableRenderData(List<Object> datas, String noDatadesc) {
-		this(null, datas, null, 0);
-	}
+    /**
+     * 动态渲染的表格
+     *
+     * @param datas
+     * @param noDatadesc
+     */
+    public TableRenderData(List<Object> datas, String noDatadesc) {
+        this(null, datas, null, 0);
+    }
 
-	/**
-	 * @param headers 表格头
-	 * @param datas 表格数据
-	 * @param noDatadesc 没有数据显示的文案
-	 * @param width 宽度
-	 */
-	public TableRenderData(List<RenderData> headers, List<Object> datas,
-			String noDatadesc, int width) {
-		this.headers = headers;
-		this.datas = datas;
-		this.noDatadesc = noDatadesc;
-		this.width = width;
-	}
+    /**
+     * @param headers    表格头
+     * @param datas      表格数据
+     * @param noDatadesc 没有数据显示的文案
+     * @param width      宽度
+     */
+    public TableRenderData(List<RenderData> headers, List<Object> datas,
+                           String noDatadesc, int width) {
+        this.headers = headers;
+        this.datas = datas;
+        this.noDatadesc = noDatadesc;
+        this.width = width;
+    }
 
-	public List<Object> getDatas() {
-		return datas;
-	}
+    public List<Object> getDatas() {
+        return datas;
+    }
 
-	public void setDatas(List<Object> datas) {
-		this.datas = datas;
-	}
+    public void setDatas(List<Object> datas) {
+        this.datas = datas;
+    }
 
-	public String getNoDatadesc() {
-		return noDatadesc;
-	}
+    public String getNoDatadesc() {
+        return noDatadesc;
+    }
 
-	public void setNoDatadesc(String noDatadesc) {
-		this.noDatadesc = noDatadesc;
-	}
+    public void setNoDatadesc(String noDatadesc) {
+        this.noDatadesc = noDatadesc;
+    }
 
-	public List<RenderData> getHeaders() {
-		return headers;
-	}
+    public List<RenderData> getHeaders() {
+        return headers;
+    }
 
-	public void setHeaders(List<RenderData> headers) {
-		this.headers = headers;
-	}
+    public void setHeaders(List<RenderData> headers) {
+        this.headers = headers;
+    }
 
-	public int getWidth() {
-		return width;
-	}
+    public int getWidth() {
+        return width;
+    }
 
-	public void setWidth(int width) {
-		this.width = width;
-	}
+    public void setWidth(int width) {
+        this.width = width;
+    }
 
 }

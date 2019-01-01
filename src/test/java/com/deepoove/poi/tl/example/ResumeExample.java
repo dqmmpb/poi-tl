@@ -1,32 +1,31 @@
 package com.deepoove.poi.tl.example;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
-import org.junit.Before;
-import org.junit.Test;
-
 import com.deepoove.poi.XWPFTemplate;
 import com.deepoove.poi.data.DocxRenderData;
 import com.deepoove.poi.data.NumbericRenderData;
 import com.deepoove.poi.data.PictureRenderData;
 import com.deepoove.poi.data.TextRenderData;
 import com.deepoove.poi.data.style.Style;
+import org.junit.Before;
+import org.junit.Test;
+
+import java.io.File;
+import java.io.FileOutputStream;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * 个人简历
+ *
  * @author Sayi
- * @version 
  */
 public class ResumeExample {
-    
+
     ResumeData datas = new ResumeData();
-    
+
     @Before
-    public void init(){
+    public void init() {
         datas.setPortrait(new PictureRenderData(100, 100, "src/test/resources/sayi.png"));
         datas.setName("卅一");
         datas.setJob("BUG工程师");
@@ -42,7 +41,7 @@ public class ResumeExample {
         datas.setEducation("学士");
         datas.setRank("班级排名 1/36");
         datas.setHobbies("音乐、画画、乒乓球、旅游、读书\nhttps://github.com/Sayi");
-        
+
         // 技术栈部分
         TextRenderData textRenderData = new TextRenderData("SpringBoot、SprigCloud、Mybatis");
         Style style = new Style();
@@ -51,8 +50,8 @@ public class ResumeExample {
         style.setFontFamily("微软雅黑");
         textRenderData.setStyle(style);
         datas.setStack(new NumbericRenderData(
-                Arrays.asList(textRenderData, textRenderData, textRenderData)));
-        
+            Arrays.asList(textRenderData, textRenderData, textRenderData)));
+
         // 模板文档循环合并
         List<ExperienceData> experiences = new ArrayList<ExperienceData>();
         ExperienceData data0 = new ExperienceData();
@@ -63,7 +62,7 @@ public class ResumeExample {
         textRenderData = new TextRenderData("负责生产BUG，然后修复BUG，同时有效实施招聘行为");
         textRenderData.setStyle(style);
         data0.setResponsibility(new NumbericRenderData(
-                Arrays.asList(textRenderData, textRenderData)));
+            Arrays.asList(textRenderData, textRenderData)));
         ExperienceData data1 = new ExperienceData();
         data1.setCompany("自由职业");
         data1.setDepartment("OpenSource 项目组");
@@ -74,7 +73,7 @@ public class ResumeExample {
         TextRenderData textRenderData1 = new TextRenderData("持续集成、Swagger文档等工具调研");
         textRenderData1.setStyle(style);
         data1.setResponsibility(new NumbericRenderData(
-                Arrays.asList(textRenderData, textRenderData1, textRenderData)));
+            Arrays.asList(textRenderData, textRenderData1, textRenderData)));
         experiences.add(data0);
         experiences.add(data1);
         experiences.add(data0);

@@ -1,23 +1,21 @@
 package com.deepoove.poi.tl.ext;
 
-import org.apache.poi.xwpf.usermodel.XWPFRun;
-import org.apache.poi.xwpf.usermodel.XWPFTable;
-
 import com.deepoove.poi.NiceXWPFDocument;
 import com.deepoove.poi.XWPFTemplate;
 import com.deepoove.poi.data.MiniTableRenderData;
 import com.deepoove.poi.policy.AbstractRenderPolicy;
 import com.deepoove.poi.template.run.RunTemplate;
 import com.deepoove.poi.util.TableTools;
+import org.apache.poi.xwpf.usermodel.XWPFRun;
+import org.apache.poi.xwpf.usermodel.XWPFTable;
 
 /**
  * 通过
  * <code>Configure.newBuilder().customPolicy("report", new
  * CustomTableRenderPolicy());</code>
  * 将模板report的策略设置成自定义的表格策略
- * 
+ *
  * @author Sayi
- * @version
  */
 public class CustomTableRenderPolicy extends AbstractRenderPolicy {
 
@@ -28,7 +26,7 @@ public class CustomTableRenderPolicy extends AbstractRenderPolicy {
 
     @Override
     public void doRender(RunTemplate runTemplate, Object data, XWPFTemplate template)
-            throws Exception {
+        throws Exception {
 
         NiceXWPFDocument doc = template.getXWPFDocument();
         XWPFRun run = runTemplate.getRun();
@@ -47,7 +45,7 @@ public class CustomTableRenderPolicy extends AbstractRenderPolicy {
         // ......
         TableTools.mergeCellsHorizonal(table, 0, 0, 7);
         TableTools.mergeCellsVertically(table, 0, 1, 9);
-        
+
         // 清空原先模板
         clearPlaceholder(run);
     }
